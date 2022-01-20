@@ -16,11 +16,15 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
             System.out.println("nCB: "+nextCloseBracket+", oP: "+openParen+", cP: "+closeParen);
+            
+            if (nextOpenBracket == -1) break;
 
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            // Test adjacency
+            if (!(openParen-nextCloseBracket > 1))
+                toReturn.add(markdown.substring(openParen + 1, closeParen));
+
             currentIndex = closeParen + 1;
 
-            if (nextOpenBracket == -1) break;
         }
         return toReturn;
     }
