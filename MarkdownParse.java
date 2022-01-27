@@ -18,15 +18,10 @@ public class MarkdownParse {
             if (!closeBracket.equals("(")) break;
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            System.out.println("nCB: "+nextCloseBracket+", oP: "+openParen+", cP: "+closeParen);
-            
-            if (nextOpenBracket == -1) break;
-
-            // Test adjacency
-            if (!(openParen-nextCloseBracket > 1))
-                toReturn.add(markdown.substring(openParen + 1, closeParen));
-
+            System.out.println("nextCloseB: " + nextCloseBracket + "; nextOpenB: "+ nextOpenBracket + "; currentIdx" + currentIndex +"\n");
+            toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
+            System.out.println(currentIndex);
         }
         return toReturn;
     }
